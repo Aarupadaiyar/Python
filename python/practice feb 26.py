@@ -1,0 +1,30 @@
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+"""df = pd.read_csv('data.csv')
+pd.set_option('display.max_rows',None)
+print(df.duplicated())
+df.plot()
+plt.show()"""
+data=pd.read_csv("data2.csv")
+#print(data)
+print(data.duplicated())
+print(data.describe)
+print(data.info)
+data1=data.copy()
+#data1.dropna(inplace = True)
+print(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
+print(data.isnull().sum())
+print(data1.isnull().sum())
+data1["name"]=data1["name"].fillna("unknown")
+data1["host_name"]=data1["host_name"].fillna("unknown")
+data1["last_review"]=data1["last_review"].fillna("Not available")
+data1["reviews_per_month"]=data1["reviews_per_month"].fillna(0)
+x=data1["availability_365"].median()
+y=data1["availability_365"].mean()
+z=data1["availability_365"].mode()
+print(x)
+print(y)
+print(z)
+
+data1.to_csv("data1.csv",index=False)
